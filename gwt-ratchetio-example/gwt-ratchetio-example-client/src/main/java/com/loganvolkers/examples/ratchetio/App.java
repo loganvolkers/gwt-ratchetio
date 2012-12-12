@@ -1,14 +1,11 @@
 package com.loganvolkers.examples.ratchetio;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HTML;
@@ -16,29 +13,20 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.loganvolkers.gwt.ratchetio.client.RatchetIoLogHandler;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class App implements EntryPoint {
-	/**
-	 * The message displayed to the user when the server cannot be reached or
-	 * returns an error.
-	 */
-	private static final String SERVER_ERROR = "An error occurred while "
-			+ "attempting to contact the server. Please check your network "
-			+ "connection and try again.";
 
-	/**
-	 * Create a remote service proxy to talk to the server-side Greeting service.
-	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
 
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		
+		
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
 		nameField.setText("GWT User");
@@ -110,43 +98,12 @@ public class App implements EntryPoint {
 				// First, we validate the input.
 				errorLabel.setText("");
 				String textToServer = nameField.getText();
-				if (!FieldVerifier.isValidName(textToServer)) {
-					errorLabel.setText("Please enter at least four characters");
-					return;
-				}
+
 
 				// Then, we send the input to the server.
 				sendButton.setEnabled(false);
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
-				greetingService.greetServer(textToServer,
-						new AsyncCallback<GreetingResponse>() {
-							public void onFailure(Throwable caught) {
-								// Show the RPC error message to the user
-								dialogBox
-										.setText("Remote Procedure Call - Failure");
-								serverResponseLabel
-										.addStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(SERVER_ERROR);
-								dialogBox.center();
-								closeButton.setFocus(true);
-							}
-
-							public void onSuccess(GreetingResponse result) {
-								dialogBox.setText("Remote Procedure Call");
-								serverResponseLabel
-										.removeStyleName("serverResponseLabelError");
-								serverResponseLabel.setHTML(new SafeHtmlBuilder()
-										.appendEscaped(result.getGreeting())
-										.appendHtmlConstant("<br><br>I am running ")
-										.appendEscaped(result.getServerInfo())
-										.appendHtmlConstant(".<br><br>It looks like you are using:<br>")
-										.appendEscaped(result.getUserAgent())
-										.toSafeHtml());
-								dialogBox.center();
-								closeButton.setFocus(true);
-							}
-						});
 			}
 		}
 
@@ -154,5 +111,8 @@ public class App implements EntryPoint {
 		MyHandler handler = new MyHandler();
 		sendButton.addClickHandler(handler);
 		nameField.addKeyUpHandler(handler);
+		
+
+		new RatchetIoLogHandler().doSomething();
 	}
 }

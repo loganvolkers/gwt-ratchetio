@@ -29,3 +29,8 @@ war/WEB-INF/classes/
 
 # Linux temp files #
 *~
+
+
+# Target directories #
+
+*/target/*

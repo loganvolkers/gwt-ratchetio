@@ -7,6 +7,17 @@
   <version>0.01</version>
   <packaging>pom</packaging>
 
+<distributionManagement>
+	<repository>
+		<id>repo</id>
+		<url>https://github.com/loganvolkers/loganvolkers-maven-repo/raw/master/releases</url>
+	</repository>
+	<snapshotRepository>
+		<id>snapshot-repo</id>
+		<url>https://github.com/loganvolkers/loganvolkers-maven-repo/raw/master/snapshots</url>
+	</snapshotRepository>
+</distributionManagement>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <gwt.version>2.5.0-rc1</gwt.version>
@@ -22,6 +33,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
 
   <build>
     <pluginManagement>
