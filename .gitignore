@@ -32,8 +32,13 @@ war/WEB-INF/classes/
 *~
 
 # Target directories #
-/gwt-ratchetio-example/gwt-ratchetio-example-client/target
-/gwt-ratchetio-example/gwt-ratchetio-example-client/tomcat
-/gwt-ratchetio-example/gwt-ratchetio-example-server/target
 /gwt-ratchetio/gwt-ratchetio-client/target
 /gwt-ratchetio/gwt-ratchetio-shared/target
+/gwt-ratchetio-demo/target
+
+
+# more caches and things from deploy #
+/gwt-ratchetio-demo/src/main/webapp/DemoApp
+/gwt-ratchetio-demo/src/main/webapp/WEB-INF/deploy/
+/gwt-ratchetio-demo/src/main/webapp/WEB-INF/classes/
+
