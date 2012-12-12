@@ -27,10 +27,13 @@ war/WEB-INF/classes/
 .settings
 */.settings
 
+
 # Linux temp files #
 *~
 
-
 # Target directories #
-
-*/target/*
+/gwt-ratchetio-example/gwt-ratchetio-example-client/target
+/gwt-ratchetio-example/gwt-ratchetio-example-client/tomcat
+/gwt-ratchetio-example/gwt-ratchetio-example-server/target
+/gwt-ratchetio/gwt-ratchetio-client/target
+/gwt-ratchetio/gwt-ratchetio-shared/target
